@@ -41,8 +41,25 @@ class PpPrbl1App:
         button2.configure(text='Filter odd')
         button2.grid(column=2, row=1)
 
+        def prime(x):
+            if x==0:
+                return False
+            if x==1:
+                return False
+            for i in range(2,x):
+                if x%2==0:
+                    return False
+            return True
+
+        def filter_primes():
+            e_text=entry1.get()
+            text1.delete('1.0',tk.END)
+            rez=[int(i) for i in e_text.split() if i.isdigit()]
+            rezult=filter(prime,rez)
+            text1.insert(tk.END,list(rezult))
+
         button3 = ttk.Button(frame1)
-        button3.configure(text='Filter primes')
+        button3.configure(text='Filter primes',command=filter_primes)
         button3.grid(column=2, row=2)
 
         button4 = ttk.Button(frame1)
