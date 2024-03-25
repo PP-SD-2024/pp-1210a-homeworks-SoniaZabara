@@ -62,8 +62,17 @@ class PpPrbl1App:
         button3.configure(text='Filter primes',command=filter_primes)
         button3.grid(column=2, row=2)
 
+        def sum_num():
+            e_text=entry1.get()
+            text1.delete('1.0',tk.END)
+            rez=[int(i) for i in e_text.split() if i.isdigit()]
+            rezultat=0
+            for i in range(0,len(rez)):
+                rezultat=rezultat+rez[i]
+            text1.insert(tk.END,rezultat)
+
         button4 = ttk.Button(frame1)
-        button4.configure(text='Sum num')
+        button4.configure(text='Sum num',command=sum_num)
         button4.grid(column=2, row=3)
 
         text1 = tk.Text(frame1)
